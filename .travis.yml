@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+- 7.7.3
+script: yarn test
+before_install:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+before_script:
+- yarn install
+deploy:
+  provider: heroku
+  api-key:
+    secure: H0HijxgXyysRXgbmamIXJwq7w8wmWx3ECYHZDDRQYyQClAxDFYKvNYwLjlKgpAtzYD8vJBUsDAi3kECu95dPBLn8JfAhTuWJC0MLUCL256eHoKr3RifYbGSU2hAPqqwPr8gblO3Rl2vqJSdqpA99/3H4lGxVLvxyz7WgaGti3O/6B1BfvCuuAVXQLdjU8PThtd2YkZRF8XGrwGDVEjgY4oIrOIPWVOpbbyVyxo+0LzyIMsusoQdMuECu8iezxp42Wt39vdLAuddI8wh5YqEDRSrycmslCbGouFvsBb7p4UqCW5w4GDaV1DgH6vcndi0aOOGwhzkfLTiEvy8gKeL5p9/59hkscwmDm280Tw3/A3lphWaa3cO1AIlBvHiTgvoRPw2Y9h2udV/gYygbe6c2cH1b1kgovjL2KZbhUFeRgw+Awblu+pMXcZQN+EJME9FUe21C5J3RlZW5APBb1k47eSrDesXUT1mRXJuwLj2zUriAnOVm4wNonUgwUpvmMf4ly/SHO/GNHiosDhOLnQm0jlNT7R7HGnK1D3JuPssYTmJNBJ2IvgytmI7frjgKvN83POP2eQLCEgaOijkNaM4TBHw1hp7Bh5G9QSAw9CCg46SPeIze8K/jqyXz+4R6y/e7dprNvtOmF/wsF/fAz7MjeVxZofUlgf2qLWUuCnqte20=
+  app:
+    master: real-estate-finder
+    develop: real-estate-finder-dev
+  on:
+    repo: anhnguyen300795/Real-estate-finder

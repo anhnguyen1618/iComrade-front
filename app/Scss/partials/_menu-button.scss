@@ -1,0 +1,105 @@
+@mixin animation($name) {
+    animation: $name .2s forwards;
+}
+
+.menu {
+    padding: 17px 10px;
+    position: fixed;
+    right: 40px;
+    top: 30px;
+    z-index: 2;
+    cursor: pointer;
+    transition-duration: .6s;
+}
+
+.color-bg {
+    padding: 18px 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.5);
+}
+
+.bar {
+    width: 60px;
+    height: 10px;
+    background-color: white;
+    margin: 6px;
+}
+
+.menu.opened {
+    .bar:first-child {
+        @include animation(first-bar-opened)
+    }
+    .bar:nth-child(2) {
+        @include animation(mid-bar-opened)
+    }
+    .bar:last-child {
+        @include animation(last-bar-opened)
+    }
+}
+
+.menu.closed {
+    .bar:first-child {
+        @include animation(first-bar-closed)
+    }
+    .bar:nth-child(2) {
+        @include animation(mid-bar-closed)
+    }
+    .bar:last-child {
+        @include animation(last-bar-closed)
+    }
+}
+
+@keyframes first-bar-opened {
+    50% {
+        transform: translateY(16px);
+    }
+    100% {
+        transform: translateY(16px) rotate(45deg);
+    }
+}
+
+@keyframes mid-bar-opened {
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes last-bar-opened {
+    50% {
+        transform: translateY(-16px);
+    }
+    100% {
+        transform: translateY(-16px) rotate(-45deg);
+    }
+}
+
+@keyframes first-bar-closed {
+    0% {
+        transform: translateY(16px) rotate(45deg);
+    }
+    50% {
+        transform: translateY(16px);
+    }
+}
+
+@keyframes mid-bar-closed {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes last-bar-closed {
+    0% {
+        transform: translateY(-16px) rotate(-45deg);
+    }
+    50% {
+        transform: translateY(-16px);
+    }
+}

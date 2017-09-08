@@ -1,0 +1,87 @@
+$post-background-color: #eeeeee;
+$post-border-color: #f1f1f1;
+.posts {
+    background-color: $post-background-color;
+    padding-top: 100px;
+    padding-bottom: 120px;
+    a {
+        text-decoration: none;
+        color: #333;
+    }
+    .post {
+        position: relative;
+        background-color: #ffffff;
+        border: 1px solid #f0f0f0;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        transition: transform 0.3s, box-shadow 0.3s;
+        .image {
+            margin: 0.5px;
+            position: relative;
+            overflow: hidden;
+            .price {
+                position: absolute;
+                background-color: rgba(216, 27, 96, .7);
+                bottom: 0;
+                right: 0;
+                height: 45px;
+                width: 45%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text {
+                    color: white;
+                    font-size: 23px;
+                }
+            }
+            img {
+                width: 100%;
+                max-height: 250px;
+            }
+        }
+        .delete-image-container {
+            padding: 8px;
+            position: absolute;
+            right: -16px;
+            top: -23px;
+            z-index: 1;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        .delete-image {
+            width: 30px;
+        }
+        .room-info {
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            h4 {
+                flex: 1;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                margin: 0px;
+                border-style: solid;
+                border-width: 2px 2px 0px 0px;
+                border-color: $post-border-color;
+            }
+            h4:last-child {
+                border-width: 2px 0px 0px 0px;
+            }
+        }
+        .info-text {
+            padding: 5px 15px 5px 15px;
+            h3 {
+                margin-top: 10px;
+            }
+        }
+    }
+    .post:hover {
+        transform: scale(1.07);
+        box-shadow: 0 1px 20px rgba(0, 0, 0, 0.3);
+    }
+    .col-sm-4 {
+        margin-bottom: 50px;
+    }
+}

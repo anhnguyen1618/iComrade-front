@@ -1,0 +1,27 @@
+.form-container {
+	display: flex;
+	align-items: center;
+
+	.input-container {
+		max-width: 0px;
+		overflow: hidden;
+		transition-duration: 0.2s;
+		margin-right: 15px;
+
+		.input-create {
+			height: 40px;
+			padding: 15px;
+			width: 0;
+			transition-duration: 0.2s;
+		}
+
+		&.long-input {
+			max-width: 250px;
+			.input-create {
+				width: 250px;
+			}
+		}	
+	}
+
+
+}

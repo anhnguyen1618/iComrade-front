@@ -1,0 +1,110 @@
+.room-container{
+	position: relative;
+
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
+
+	.btn-delete {
+		background-color: white;
+		position: absolute;
+		right: -15px;
+		top: -15px;
+		z-index: 2;
+		padding: 5px;
+		border-radius: 50%;
+		box-shadow: -2px 2px 10px rgba(0,0,0,.2);
+    cursor: pointer;
+
+		img {
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+
+	.room {
+		background-color: white;
+		padding: 40px;
+		border-radius: 5px;
+		display: flex;
+		justify-content: space-between;
+		overflow: hidden;
+		box-shadow: 5px 5px 20px #888888;
+
+		&__header{
+			width: 40%;
+			z-index: 1;
+			font-size: 20px;
+		}
+
+		&__info {
+			width: 60%;
+			position: relative;
+			&-container {
+				position: relative;
+				z-index: 10;
+				display: flex;
+				justify-content: space-between;
+			}
+
+			&-status{
+				margin-left: 60px;
+				font-size: 19px;
+				color: white;
+			}
+
+			&:before {
+				content: '';
+				position: absolute;
+				background-color: #00d7a7;
+				width: 1000px;
+				height: 1000px;
+				transform: rotate(50deg) translate(-200px, 0px);
+				transition-duration: 0.3s;
+			}
+		}
+
+		&.room-booked-run {
+			.room__info {
+				&:before {
+					background-color: #E53935;
+					transform: rotate(40deg) translate(-558px,-544px);
+				}
+
+				&-status{
+					color: white;
+				}
+			}
+		}
+
+		&.room-booked-occupy {
+			.room__info {
+				&:before {
+					background-color: #ffe977;
+					transform: rotate(50deg) translate(-1200px, 0px);
+				}
+
+				&-status{
+					color: black;
+				}
+			}
+		}
+
+		&.room-booked-queue {
+			.room__info {
+				&:before {
+					background-color: #4A148C;
+					transform: rotate(40deg) translate(-558px,-544px);
+				}
+
+				&-status{
+					color: white;
+				}
+			}
+		}
+	}
+
+}
+
+

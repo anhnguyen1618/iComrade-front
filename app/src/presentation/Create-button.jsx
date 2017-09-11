@@ -30,8 +30,7 @@ class CreateButton extends React.Component {
   	if (this.state.bufferValue) {
   		emitRoomAction(CREATE_ROOM, this.state.bufferValue)
   	}
-  	this.toggleInput()
-  	this.setState({...this.state, bufferValue: ''})
+  	this.setState({showInput: !this.state.showInput, bufferValue: ''})
   }
 
   render() {
@@ -40,7 +39,7 @@ class CreateButton extends React.Component {
     return (
       <div className="form-container">
       	<div className={inputContainerClassNames}>
-      		<input type="text" onChange={this.updateBufferValue} className="input-create"/>
+      		<input type="text" onChange={this.updateBufferValue} value={bufferValue} className="input-create"/>
       	</div>
       	<button
       		className="btn btn-success" 

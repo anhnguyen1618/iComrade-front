@@ -24,58 +24,21 @@ export class Main extends React.Component {
 
   componentDidMount() {
     this.props.initializeSocket()
-    // const socket = openSocket('http://localhost:8000', { query: 'token=TOKEN_HERE'});
-    // this.socket = socket;
-    // socket.on(BOOK_ROOM, ({roomName, queueNumber}) => {
-    //   this.updateQueueNumber(roomName, 'LOAD', queueNumber)
-    // });
-    //
-    // socket.on(FINISH_ROOM, ({roomName}) => {
-    //   this.updateQueueNumber(roomName, 'DECREASE')
-    // });
-    //
-    // socket.on(CANCEL_ROOM, ({roomName}) => {
-    //   this.updateQueueNumber(roomName, 'LOAD', -1)
-    // });
-    //
-    // socket.on(UPDATE_ROOM_INFO, data => {
-    //   const rooms = Object.keys(data).map(key => ({roomName: key, numberOfPeopleInUse : data[key]}))
-    //   this.setState({...this.state, rooms})
-    // });
-    // socket.emit(GET_ROOM)
+    this.props.emitRoomAction(GET_ROOM)
 
-    // window.addEventListener('beforeunload', this.cancelBooking);
+
+    window.addEventListener('beforeunload', this.cancelAllBooking);
   }
 
   componentWillUnmount() {
-    // window.removeEventListener('beforeunload', this.cancelBooking);
+    window.removeEventListener('beforeunload', this.cancelAllBooking);
   }
 
   cancelAllBooking() {
-    const { rooms } = this.state;
+    const { rooms, emitRoomAction } = this.props;
     rooms.forEach(({roomName}) => {
-      this.socket.emit(CANCEL_ROOM, roomName);
+      emitRoomAction(CANCEL_ROOM, roomName);
     })
-  }
-
-  // updateQueueNumber(roomName, action, number) {
-  //   const queueNumberStorage = { ...this.state.queueNumberStorage }
-  //   switch(action) {
-  //     case 'LOAD':
-  //       queueNumberStorage[roomName] = number;
-  //       this.setState({...this.state, queueNumberStorage: queueNumberStorage});
-  //       return ;
-  //     case 'DECREASE':
-  //       if (queueNumberStorage[roomName] >=0 ) {
-  //         queueNumberStorage[roomName] =  queueNumberStorage[roomName] - 1;
-  //         this.setState({...this.state, queueNumberStorage: queueNumberStorage});
-  //         return ;
-  //       }
-  //   }
-  // }
-
-  emitRoomAction(action, roomName) {
-    this.socket.emit(action, roomName)
   }
 
   render() {
@@ -105,8 +68,8 @@ export class Main extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { rooms, queueNumbers } = this.state;
+const mapStateToProps = ({ rooms, queueNumbers }) => {
+  console.log(rooms);
   return {
     rooms,
     queueNumbers

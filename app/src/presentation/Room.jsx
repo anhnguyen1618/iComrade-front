@@ -14,11 +14,11 @@ const Room = ({ roomName, numberOfPeopleInUse, queueNumber, emitRoomAction }) =>
 
 	return (
 		<div className="room-container">
-			{/* 
+			 
 			<div className="btn-delete" onClick={() => emitRoomAction(REMOVE_ROOM, roomName)}>
 				<img src="https://image.ibb.co/htCMRQ/rubbish_bin.png"/>
 			</div>
-			*/}
+			
 	
 			<div className={roomClasses}>
 				<div className="room__header">

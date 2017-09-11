@@ -1,3 +1,4 @@
+import SocketService from '../services/socket-service'
 export const promiseDispatchMiddleWare = ({ dispatch }) => {
   return next => action => {
     if (typeof action === 'object' && action.types && action.types.length === 2 && action.api) {
@@ -24,9 +25,8 @@ export const promiseFlattenerMiddleWare = ({ dispatch }) => {
 export const socketMiddleware = ({dispatch}) => {
   return next => action => {
     const { type, payload, protocol } = action;
-    if (protocol ==== 'SOCKET') {
-      // Todo, hook socketService here
-      const socketService = {}
+    if (protocol === 'SOCKET') {
+      const socketService = new SocketService()
       socketService.emitEvent(type, payload);
       return;
     }

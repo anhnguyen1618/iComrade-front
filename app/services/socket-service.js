@@ -2,11 +2,11 @@ import openSocket from 'socket.io-client'
 
 const URL = 'http://localhost:8000'
 
-let _instance = null;
+let _instance;
 class SocketService {
   socket = null;
   constructor() {
-    if (!instance) {
+    if (!_instance) {
       _instance = this;
       this.initializeSocket();
       this._eventNames = [];
@@ -27,7 +27,7 @@ class SocketService {
     }
     this._eventNames.push(eventName)
 
-    this.socket.on(keyword, hanlder)
+    this.socket.on(eventName, hanlder)
   }
 
   emitEvent(eventName, payload) {

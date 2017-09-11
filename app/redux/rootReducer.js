@@ -1,9 +1,12 @@
 import { combineReducers } from 'redux'
 import { reducer as form } from 'redux-form'
 
-import roomData from './reducers/room'
+import { roomReducer as rooms } from './reducers/room'
+import { queueNumberReducer as queueNumbers } from './reducers/queueNumbers'
+
 
 export default combineReducers({
-  roomData,
+  rooms,
+  queueNumbers,
   form
 })

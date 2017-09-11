@@ -8,3 +8,7 @@ export const getStatus = (numberOfPeopleInUse, queueNumber) => {
 
 	if (queueNumber > 0) return `Your number: ${queueNumber}`
 }
+
+export const populateRoomInfo = (data) => {
+	return Object.keys(data).map(key => ({roomName: key, numberOfPeopleInUse : data[key]}))
+}

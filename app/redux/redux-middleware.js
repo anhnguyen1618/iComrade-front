@@ -20,3 +20,17 @@ export const promiseFlattenerMiddleWare = ({ dispatch }) => {
     return next(action)
   }
 }
+
+export const socketMiddleware = ({dispatch}) => {
+  return next => action => {
+    const { type, payload, protocol } = action;
+    if (protocol ==== 'SOCKET') {
+      // Todo, hook socketService here
+      const socketService = {}
+      socketService.emitEvent(type, payload);
+      return;
+    }
+
+    return next(action)
+  }
+}

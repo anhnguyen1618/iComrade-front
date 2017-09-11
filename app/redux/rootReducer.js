@@ -6,7 +6,7 @@ import { queueNumberReducer as queueNumbers } from './reducers/room'
 
 
 export default combineReducers({
-  roomReducer,
+  rooms,
   queueNumbers,
   form
 })

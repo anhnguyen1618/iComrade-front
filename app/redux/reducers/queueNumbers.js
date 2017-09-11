@@ -4,7 +4,7 @@ export const queueNumberReducer = (queueNumbers = {}, action) => {
   switch (action.type) {
     case 'LOAD_QUEUE_NUMBER':
       return {...queueNumbers, [roomName]: number}
-    case 'DECREASE':
+    case 'DECREASE_QUEUE_NUMBER':
       const currentNumber = queueNumbers[roomName]
       if (currentNumber >= 0) {
         return { ...queueNumbers, [roomName]: currentNumber - 1 }

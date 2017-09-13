@@ -8,6 +8,7 @@ import CreateButton from '../presentation/Create-button.jsx'
 import { CREATE_ROOM, REMOVE_ROOM, BOOK_ROOM,
         FINISH_ROOM, CANCEL_ROOM, UPDATE_ROOM_INFO, GET_ROOM } from '../../constants/action'
 import { startSocketConnection } from '../../services/socket-helpers'
+import { logOut } from '../../redux/api'
 
 
 export class Main extends React.Component {
@@ -23,9 +24,11 @@ export class Main extends React.Component {
   }
 
   componentDidMount() {
-    this.props.initializeSocket()
-    this.props.emitRoomAction(GET_ROOM)
-
+    const { hasUser, initializeSocket, emitRoomAction } = this.props
+    if (hasUser) {
+      this.props.initializeSocket()
+      this.props.emitRoomAction(GET_ROOM)
+    }
 
     window.addEventListener('beforeunload', this.cancelAllBooking);
   }
@@ -43,9 +46,10 @@ export class Main extends React.Component {
 
   render() {
     // const { queueNumberStorage, rooms } = this.state;
-    const { rooms, queueNumbers, emitRoomAction } = this.props
+    const { rooms, queueNumbers, emitRoomAction, logOut } = this.props
     return (
       <div className="container">
+        <button onClick={logOut}>Logout</button>
         <div className="header">
           <h1>Resources</h1>
           <CreateButton emitRoomAction={emitRoomAction}/>
@@ -68,18 +72,19 @@ export class Main extends React.Component {
   }
 }
 
-const mapStateToProps = ({ rooms, queueNumbers }) => {
-  console.log(rooms);
+const mapStateToProps = ({ rooms, queueNumbers, user }) => {
   return {
     rooms,
-    queueNumbers
+    queueNumbers,
+    hasUser: !!user
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     initializeSocket: () => startSocketConnection(dispatch),
-    emitRoomAction: (type, roomName) => dispatch({ protocol: 'SOCKET', type, payload: roomName })
+    emitRoomAction: (type, roomName) => dispatch({ protocol: 'SOCKET', type, payload: roomName }),
+    logOut: () => dispatch(logOut())
   }
 }
 

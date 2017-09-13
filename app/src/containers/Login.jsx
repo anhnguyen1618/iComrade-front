@@ -25,11 +25,11 @@ export class Login extends React.Component {
   }
 
   onSave(user) {
-  	console.log(user);
+  	const { router, signUp, logIn } = this.props
 	  if (this.state.activeTab === "Login") {
-	    return this.props.logIn(user)
+	    return logIn(user)
 	      .then(() => {
-	      	// redirect user here
+	      	router.push('/dashboard')
 	      	console.log('done');
 	      })
 	      .catch(err => {
@@ -37,13 +37,12 @@ export class Login extends React.Component {
 	        throw new SubmissionError({ _error: 'Login failed!' })
 	      })
 	  }
-	  return this.props.signUp(user)
+	  return signUp(user)
 	    .then(() => {
 	      this.changeActiveTab('Login')
 	      alert("Account created successfully!")
 	    })
 	    .catch(err => {
-	      console.log(err);
 	      throw new SubmissionError({ _error: 'This user is already exist!' })
 	    })
   }

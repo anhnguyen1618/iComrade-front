@@ -16,7 +16,7 @@ class SocketService {
   }
 
   initializeSocket() {
-    this.socket = openSocket(URL, { query: 'token=TOKEN_HERE'});
+    this.socket = openSocket(URL, { query: `token=${localStorage.getItem('token')}`});
   }
 
   addSocketEventHanler(eventName, hanlder) {

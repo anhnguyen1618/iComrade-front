@@ -14,7 +14,7 @@ class CreateButton extends React.Component {
     this.toggleInput = this.toggleInput.bind(this)
     this.createRoom = this.createRoom.bind(this)
     this.updateBufferValue = this.updateBufferValue.bind(this)
-
+    this.cancelCreate = this.cancelCreate.bind(this)
   }
 
   toggleInput() {
@@ -33,7 +33,17 @@ class CreateButton extends React.Component {
   	this.setState({showInput: !this.state.showInput, bufferValue: ''})
   }
 
+  cancelCreate() {
+    this.setState({showInput: !this.state.showInput, bufferValue: ''})
+  }
+
   render() {
+        //     <button
+        //   className="btn btn-success" 
+        //   disabled={ showInput && !bufferValue}
+        //   onClick={showInput? this.createRoom :this.toggleInput}>
+        //   {showInput ? 'Submit' : 'Create'}
+        // </button>
   	const { showInput, bufferValue } = this.state
     const inputContainerClassNames = classnames({"input-container": true,"long-input": showInput}) 
     return (
@@ -41,12 +51,15 @@ class CreateButton extends React.Component {
       	<div className={inputContainerClassNames}>
       		<input type="text" onChange={this.updateBufferValue} value={bufferValue} className="input-create"/>
       	</div>
-      	<button
-      		className="btn btn-success" 
-      		disabled={ showInput && !bufferValue}
-      		onClick={showInput? this.createRoom :this.toggleInput}>
-      		{showInput ? 'Submit' : 'Create'}
-      	</button>
+
+        
+        <img 
+          className={classnames({"create-button": true, "create-button-disabled": showInput && !bufferValue})}
+          onClick={showInput? this.createRoom :this.toggleInput}
+          src={ showInput ? 'https://i.imgur.com/WnJq5mB.png' :'https://i.imgur.com/Bxea7FJ.png' } alt=""/>
+
+        { showInput && <img onClick={this.cancelCreate} className="cancel-button" src="https://i.imgur.com/05NMSEj.png"/>}
+
       </div>
     );
   }

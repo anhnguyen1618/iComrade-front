@@ -14,7 +14,7 @@ import { logOut } from '../../redux/api'
 export class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.socket = null
+    this.socketIsStarted = false;
     this.state = {
       rooms: [],
       queueNumberStorage: {}
@@ -24,11 +24,25 @@ export class Main extends React.Component {
   }
 
   componentDidMount() {
-    const { initializeSocket, emitRoomAction } = this.props
-    this.props.initializeSocket()
-    this.props.emitRoomAction(GET_ROOM)
+    const { initializeSocket, emitRoomAction, hasUser } = this.props
+
+    if (hasUser) {
+      this.startSocket()
+    }
 
     window.addEventListener('beforeunload', this.cancelAllBooking);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.hasUser && !this.socketIsStarted) {
+      this.startSocket()
+    }
+  }
+
+  startSocket() {
+    this.socketIsStarted = true;
+    this.props.initializeSocket()
+    this.props.emitRoomAction(GET_ROOM)
   }
 
   componentWillUnmount() {

@@ -16,6 +16,7 @@ class SocketService {
   }
 
   initializeSocket() {
+    console.log('token',localStorage.getItem('token') );
     this.socket = openSocket(URL, { query: `token=${localStorage.getItem('token')}`});
   }
 

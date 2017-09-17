@@ -19,6 +19,6 @@ export const startSocketConnection = (dispatch) => {
   })
 
   socketService.addSocketEventHanler(CANCEL_ROOM, ({roomName}) => {
-    dispatch({type: DECREASE_QUEUE_NUMBER, roomName})
+    dispatch({type: LOAD_QUEUE_NUMBER, roomName, number: -1})
   })
 }

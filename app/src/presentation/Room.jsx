@@ -12,13 +12,19 @@ const Room = ({ roomName, numberOfPeopleInUse, queueNumber, emitRoomAction }) =>
 		'room-booked-queue': queueNumber > 0
 	});
 
+		            // { queueNumber === 0 && (
+	            	// <button
+	            	// 	className="waves-effect waves-light btn btn-primary" 
+	            	// 	onClick={() => emitRoomAction(FINISH_ROOM, roomName)}>
+	            	// 	Finish
+	            	// </button>) }
+
 	return (
 		<div className="room-container">
 			 
 			<div className="btn-delete" onClick={() => emitRoomAction(REMOVE_ROOM, roomName)}>
 				<img src="https://image.ibb.co/htCMRQ/rubbish_bin.png"/>
 			</div>
-			
 	
 			<div className={roomClasses}>
 				<div className="room__header">
@@ -46,12 +52,7 @@ const Room = ({ roomName, numberOfPeopleInUse, queueNumber, emitRoomAction }) =>
 	            		Cancel
 	            	</button>)
 	          	}
-	            { queueNumber === 0 && (
-	            	<button
-	            		className="waves-effect waves-light btn btn-primary" 
-	            		onClick={() => emitRoomAction(FINISH_ROOM, roomName)}>
-	            		Finish
-	            	</button>) }
+
 						</div>
 					</div>
 				</div>

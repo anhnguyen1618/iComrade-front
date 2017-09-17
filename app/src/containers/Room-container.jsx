@@ -59,6 +59,7 @@ export class Main extends React.Component {
           const queueNumber = queueNumbers[roomName];
           return (
             <Room
+              key={roomName}
               roomName={roomName}
               numberOfPeopleInUse={numberOfPeopleInUse}
               emitRoomAction={emitRoomAction}

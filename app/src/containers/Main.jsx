@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import { getCurrentUser } from '../../redux/api'
+import { getUrgentRooms } from '../../redux/selectors'
+
+import Notification from './Notification.jsx'
 
 export class Main extends React.Component {
   constructor(props) {
@@ -21,20 +24,22 @@ export class Main extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-  	if (nextProps.hasUser !== this.props.hasUser && !nextProps.hasUser) {
-  		this.props.router.push('/')
+    const { hasUser, router } = this.props
+  	if (nextProps.hasUser !== hasUser && !nextProps.hasUser) {
+  		router.push('/')
   	}
   }
 
-
-
   render() {
-  	const { router } = this.props
+  	const { router, notificationIsShown } = this.props
     return (
       <div>
-	      {
-	      	React.cloneElement(this.props.children, { router })
-	      }
+        <div className={notificationIsShown && "main-content"}>
+          {
+            React.cloneElement(this.props.children, { router })
+  	      }
+        </div>
+        { notificationIsShown && <Notification/> }
       </div>
     );
   }
@@ -42,7 +47,8 @@ export class Main extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    hasUser: !!state.user
+    hasUser: !!state.user,
+    notificationIsShown: state.notificationIsShown
   }
 }
 

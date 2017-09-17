@@ -34,3 +34,20 @@ export const socketMiddleware = ({dispatch}) => {
     return next(action)
   }
 }
+
+export const notificationMiddeware = ({dispatch, getState}) => {
+  return next => action => {
+    if (action.type === 'LOAD_QUEUE_NUMBER' || action.type === 'DECREASE_QUEUE_NUMBER') {
+      setTimeout(() => {
+        const { queueNumbers } = getState();
+        const { roomName } = action;
+        if (queueNumbers[roomName] === 0) {
+          dispatch({type: 'SHOW_NOTIFICATION'})
+        }
+      }, 300)
+    }
+    
+    return next(action)
+  }
+}
+

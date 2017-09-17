@@ -33,7 +33,7 @@ const Room = ({ roomName, numberOfPeopleInUse, queueNumber, emitRoomAction }) =>
 							{ 
 								queueNumber === -1 && 
 								(<button 
-									className="btn btn-default"
+									className="waves-effect waves-light btn btn-book"
 									onClick={() => emitRoomAction(BOOK_ROOM, roomName)}>Book</button>) 
 							}
 
@@ -41,14 +41,14 @@ const Room = ({ roomName, numberOfPeopleInUse, queueNumber, emitRoomAction }) =>
 	            { 
 	            	queueNumber >= 0 && (
 	            	<button 
-	            		className="btn btn-warning"
+	            		className="waves-effect waves-light btn btn-warning"
 	            		onClick={() => emitRoomAction(CANCEL_ROOM, roomName)}>
 	            		Cancel
 	            	</button>)
 	          	}
 	            { queueNumber === 0 && (
 	            	<button
-	            		className="btn btn-primary" 
+	            		className="waves-effect waves-light btn btn-primary" 
 	            		onClick={() => emitRoomAction(FINISH_ROOM, roomName)}>
 	            		Finish
 	            	</button>) }

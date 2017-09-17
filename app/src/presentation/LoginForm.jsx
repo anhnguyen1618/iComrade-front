@@ -15,7 +15,7 @@ const LoginForm = ({handleSubmit, activeTab, error, submitting}) => {
     	{error && <center className="error-message"><strong>{error}</strong></center>}
     	<Field name="username" component={LoginInput}/>
       	<Field name="password" component={LoginInput}/>
-      	<button className="pull-right loginButton" type="submit" disabled={submitting}>{activeTab}</button>
+      	<button className="pull-right waves-effect waves-light btn" type="submit" disabled={submitting}>{activeTab}</button>
     </form>
 	)
 }

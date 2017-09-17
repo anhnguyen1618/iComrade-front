@@ -24,11 +24,9 @@ export class Main extends React.Component {
   }
 
   componentDidMount() {
-    const { hasUser, initializeSocket, emitRoomAction } = this.props
-    if (hasUser) {
-      this.props.initializeSocket()
-      this.props.emitRoomAction(GET_ROOM)
-    }
+    const { initializeSocket, emitRoomAction } = this.props
+    this.props.initializeSocket()
+    this.props.emitRoomAction(GET_ROOM)
 
     window.addEventListener('beforeunload', this.cancelAllBooking);
   }
@@ -49,9 +47,11 @@ export class Main extends React.Component {
     const { rooms, queueNumbers, emitRoomAction, logOut } = this.props
     return (
       <div className="container">
-        <button onClick={logOut}>Logout</button>
+        <div className="logoutContainer">
+          <img src="https://i.imgur.com/Dz9Tpka.png" className="logout-button" onClick={logOut}/>
+        </div>
         <div className="header">
-          <h1>Resources</h1>
+          <h4>Resources</h4>
           <CreateButton emitRoomAction={emitRoomAction}/>
         </div>
 

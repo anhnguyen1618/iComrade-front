@@ -28,8 +28,14 @@
 	}
 }
 
-.logout-button {
+.logout-button{
 	margin-top: 20px;
 	height: 80px;
 	cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+	.logout-button {
+		display: none;
+	}
 }

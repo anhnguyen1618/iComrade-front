@@ -31,3 +31,9 @@ body {
 		}
 	}
 }
+
+@media screen and (max-width: 700px) {
+	.container {
+		padding: 5px;
+	}
+}

@@ -107,4 +107,55 @@
 
 }
 
+@media screen and (max-width: 700px) {
+	.room__header, .room__info  {
+		min-height: 80px;
+	}
+
+	.room-container {
+		.room {
+			padding: 30px;
+			
+
+			.room__info {
+				&-container {
+					display: flex;
+					flex-direction: column;
+				}
+
+				&-status {
+					display: flex;
+					justify-content: flex-end;
+					margin-left: 50px;
+				}
+
+				.button-group {
+					margin-top: 20px;
+					display: flex;
+					justify-content: flex-end;
+				}
+
+				&:before {
+					transform: rotate(32deg) translate(-170px, 0px);
+				}
+			}
+
+			&.room-booked-occupy {
+				.room__info:before {
+					transform: rotate(31deg) translate(-1179px, 21px);
+				}
+			}
+
+			&.room-booked-queue {
+				.room__info:before {
+					transform: rotate(51deg) translate(-573px, -410px);
+				}
+			}
+
+		}
+	}
+
+
+}
+
 

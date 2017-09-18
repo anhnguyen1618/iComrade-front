@@ -48,3 +48,11 @@
   	transform: scale(1.1)
   }
 }
+
+@media screen and (max-width: 700px) {
+	.notification-container {
+		.notification {
+			width: 90%;
+		}
+	}
+}

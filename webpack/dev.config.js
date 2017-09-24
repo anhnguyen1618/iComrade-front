@@ -10,6 +10,7 @@ module.exports = merge({
 
   devServer: {
     contentBase: PATHS.build,
+    host: '0.0.0.0',
     port: 8080,
     inline: true,
     hot: true,
@@ -17,7 +18,7 @@ module.exports = merge({
     historyApiFallback: {
       index: 'index.html'
     },
-    watchOptions: { poll: 1000, ignored: /node_modules/ },
+    watchOptions: { poll: true, ignored: /node_modules/ },
     proxy: {
       '/api': {
         target: 'http://localhost:8000/',

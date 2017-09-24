@@ -1,0 +1,12 @@
+version: '2.0'
+
+services:
+  node:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app:/iComrade/src/icomrade-front/app
+    environment:
+      - NODE_ENV=development

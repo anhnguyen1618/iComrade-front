@@ -38,12 +38,6 @@ class CreateButton extends React.Component {
   }
 
   render() {
-        //     <button
-        //   className="btn btn-success" 
-        //   disabled={ showInput && !bufferValue}
-        //   onClick={showInput? this.createRoom :this.toggleInput}>
-        //   {showInput ? 'Submit' : 'Create'}
-        // </button>
   	const { showInput, bufferValue } = this.state
     const inputContainerClassNames = classnames({"input-container": true,"long-input": showInput}) 
     return (

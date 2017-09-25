@@ -35,4 +35,12 @@ describe('Room', () => {
     expect(subject.find('.long-input').length).toBeTruthy()
   });
 
+  it('should not show input form when clicking cancel button', () => {
+    const node = subject.find('.create-button')
+    node.simulate('click')
+    const cancelButton = subject.find('.cancel-button')
+    cancelButton.simulate('click')
+    expect(subject.find('.long-input').length).toBeFalsy()
+  });
+
 })

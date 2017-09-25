@@ -7,7 +7,6 @@ import Main from './containers/Main.jsx'
 
 class App extends Component {
 	render() {
-			// <RoomContainer/>	
 		return (
 			<Router history={browserHistory} >
         <Route path='/' component={Main}>

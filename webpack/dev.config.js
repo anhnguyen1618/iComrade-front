@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const DashboardPlugin = require('webpack-dashboard/plugin');
 const merge = require('webpack-merge').smart;
 
 const PATHS = require('./paths.js')
@@ -36,7 +35,6 @@ module.exports = merge({
       'NODE_ENV': JSON.stringify('development')
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoErrorsPlugin()
   ]

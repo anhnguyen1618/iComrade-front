@@ -19,8 +19,13 @@ const renderIndex = (req, res) => res.sendFile(path.join(__dirname + '/index.htm
 app.get('/', renderIndex)
 app.get('/dashboard', renderIndex)
 
+// Static route
 app.use('/public', express.static(__dirname + '/public/'))
+
+// API route
 app.use('/api', proxy({target, changeOrigin: true}))
+
+// Web socket
 app.use(wsProxy)
 
 var server = app.listen(process.env.PORT || 8000)

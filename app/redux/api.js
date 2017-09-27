@@ -10,7 +10,6 @@ export const login = (user) => {
 
   return axios.post(`${BASE_URL}/auth/login`, user)
     .then(res => {
-      console.log(res.headers['x-access-token']);
       localStorage.setItem('token', res.headers['x-access-token'])
       return userActions.logIn(res.data)
     })

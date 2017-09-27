@@ -12,7 +12,7 @@ module.exports = {
     PATHS.app
   ],
   output: {
-    path: PATHS.build,
+    path: PATHS.serve,
     filename: 'bundle.js'
   },
   resolve: {

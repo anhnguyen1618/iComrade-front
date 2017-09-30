@@ -9,5 +9,5 @@ services:
     volumes:
       - ./app:/iComrade/src/icomrade-front/app
     environment:
-      - NODE_ENV=development
+      - MODE=development
       - PORT=8080

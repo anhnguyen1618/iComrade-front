@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "node_modules/.bin/webpack-dev-server --hot --config webpack/dev.config.js",
-    "build": "webpack -p --config webpack/prod.config.js"
+    "build": "webpack -p --config webpack/prod.config.js",
+    "serve": "node build/index.js"
   },
   "author": "",
   "license": "ISC",

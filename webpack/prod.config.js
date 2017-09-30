@@ -22,11 +22,14 @@ module.exports = merge({
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'vendor.bundle.js',
-      minChunks: ({ resource }) => (
-        resource &&
-        resource.indexOf('node_modules') >= 0 &&
-        resource.match(/\.js$/)
-      )
+      minChunks: function (package) {
+        const resource = package.resource;
+        return (
+          resource &&
+          resource.indexOf('node_modules') >= 0 &&
+          resource.match(/\.js$/)
+        )
+      }
     }),
   ],
 }, common)

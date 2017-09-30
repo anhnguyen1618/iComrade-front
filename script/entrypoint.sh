@@ -1,12 +1,8 @@
 #!/bin/bash
 
 if [ "$MODE" == "development" ]; then
-	CONFIG_OUTFILE="/app/angular/src/assets/config.json"
-
-	# Clean cached version, if any
-	if [ -f "$CONFIG_OUTFILE" ]; then
-		rm -f $CONFIG_OUTFILE
-	fi
+	npm start
 else
-	CONFIG_OUTFILE="/app/angular/dist/assets/config.json"
+	npm run build
+	npm run serve
 fi

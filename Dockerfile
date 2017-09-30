@@ -1,4 +1,4 @@
-FROM node:6.11.3-alpine
+FROM node:8.6-alpine
 
 FROM catchdigital/node-sass
 
@@ -14,4 +14,6 @@ RUN yarn && npm cache clean --force
 
 COPY . .
 
-CMD ["npm", "start"]
+RUN chmod +x ./script/entrypoint.sh
+
+CMD ["script/entrypoint.sh"]

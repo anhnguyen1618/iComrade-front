@@ -3,13 +3,13 @@ import { Field, reduxForm } from 'redux-form'
 
 import LoginInput from './LoginInput.jsx'
 
-const LoginForm = ({handleSubmit, activeTab, error, submitting}) => {
+export const LoginForm = ({handleSubmit, activeTab, error, submitting}) => {
 	return (
 		<form className="form" onSubmit={handleSubmit}>
     	<center>
     	{ activeTab === 'Login'
-    		?<img src="http://www.computer-repairs-auckland.co.nz/images/home_with_wifi.png" alt=""/>
-	    	: <img src="http://i.imgur.com/8XZaKyN.png" alt=""/>
+    		? <img className="login-logo" src="http://www.computer-repairs-auckland.co.nz/images/home_with_wifi.png" alt=""/>
+	    	: <img className="signup-logo" src="http://i.imgur.com/8XZaKyN.png" alt=""/>
 	    }
     	</center>
     	{error && <center className="error-message"><strong>{error}</strong></center>}

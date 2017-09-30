@@ -12,13 +12,6 @@ const Room = ({ roomName, numberOfPeopleInUse, queueNumber, emitRoomAction }) =>
 		'room-booked-queue': queueNumber > 0
 	});
 
-		            // { queueNumber === 0 && (
-	            	// <button
-	            	// 	className="waves-effect waves-light btn btn-primary" 
-	            	// 	onClick={() => emitRoomAction(FINISH_ROOM, roomName)}>
-	            	// 	Finish
-	            	// </button>) }
-
 	return (
 		<div className="room-container">
 			 
@@ -28,7 +21,7 @@ const Room = ({ roomName, numberOfPeopleInUse, queueNumber, emitRoomAction }) =>
 	
 			<div className={roomClasses}>
 				<div className="room__header">
-					<span>{roomName}</span>
+					<span className="room-name">{roomName}</span>
 				</div>
 				<div className="room__info">
 					<div className="room__info-container">

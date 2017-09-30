@@ -9,3 +9,12 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 before_script:
 - yarn install
+deploy:
+  provider: heroku
+  api_key:
+    secure: KsYkhKt9mLruILCoAvlpeMDgBocYFb6UDtDkwYI4dq+YUqlpW5SAYx/3CQymf9eNwq1tra/+xgs7Bms0Amy4SUV9oiJ0Kj4wjpNfXVzAc5Xp+thKznyeRpNCkLO90himgn2z8kwwjmHOxn8TaFEvQad2Gt1R22W6TYPyf7rmSGkwkkniI+mrvQkwshS6bdiMMKWO1s6neOg7usOYrNHR25dcxIBXBVehlCoXiZ1rWIpmh3tkwil2ceebQPV80+z0JLqek/CNFomLPl+EKla6267SOxTePW5nu82EYPOwOFzjXDK+JDu9UPB3X2rxJBFPLolfx0/qFV2YsO71m70NrWst0M1Q2BeUXAWJDNVlzK4lC9RiDrxix2ne5edTAZPmxRZF1a0/o5vPXjr02Y6ZYu7e5eUCMUd6NgmZl3QPY6N5umoR8EPrjqehD/vUx9p9AhziO1h52hOYUhtl3VHZ6eDQPY87Z8PbPmQ1UFJrboUUk9kOJOaZxgMmKvKDAUhibm1qEsXIeC0jI9EiXXQEKvAC9FLOFBE+P67+c3h57F+2vKTgw49yeXHU1pyQsDWmaMnuzwS+CxMLCHn1d7zqT1kzcfprtWMgj8i/63HDG94JOACE5wUS+nT6dAJLpdu7bD2clYLfK2XziavrAaPhPmqF2d2XgdbJpWLsQCOyA5s=
+  app:
+    master: icomrade-front
+    develop: icomrade-front-dev
+  on:
+    repo: anhnguyen300795/iComrade-front

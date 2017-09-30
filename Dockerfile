@@ -14,6 +14,4 @@ RUN yarn && npm cache clean --force
 
 COPY . .
 
-# ENTRYPOINT ["/sbin/tini", "--"]
-
 CMD ["npm", "start"]

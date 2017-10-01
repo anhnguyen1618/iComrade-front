@@ -17,5 +17,3 @@ deploy:
     master: icomrade-front
     develop: icomrade-front-dev
   local_dir: build
-  on:
-    repo: anhnguyen300795/iComrade-front

@@ -13,7 +13,7 @@ var wsProxy = proxy('/', {
 
 const app = express();
 
-const renderIndex = (req, res) => res.sendFile(path.join(__dirname + '/index.html'));
+const renderIndex = (req, res) => res.sendFile(path.join(__dirname + '/index-node.html'));
 
 // React route
 app.get('/', renderIndex)

@@ -7,25 +7,23 @@ import Room from '../presentation/Room.jsx'
 import CreateButton from '../presentation/Create-button.jsx'
 
 import { CREATE_ROOM, REMOVE_ROOM, BOOK_ROOM,
-        FINISH_ROOM, CANCEL_ROOM, UPDATE_ROOM_INFO, GET_ROOM } from '../../constants/action'
+        FINISH_ROOM, CANCEL_ROOM, UPDATE_ROOM_INFO, GET_ROOM, DESTROY_SOCKET } from '../../constants/action'
 import { startSocketConnection } from '../../services/socket-helpers'
 import { logOut } from '../../redux/api'
+import { getRoomAction } from '../../redux/actions/socket'
 import { userIsAdmin } from '../../redux/selectors'
 
 export class Main extends React.Component {
   constructor(props) {
     super(props);
     this.socketIsStarted = false;
-    this.state = {
-      rooms: [],
-      queueNumberStorage: {}
-    };
 
     this.cancelAllBooking = this.cancelAllBooking.bind(this)
+    this.logOut = this.logOut.bind(this)
   }
 
   componentDidMount() {
-    const { initializeSocket, emitRoomAction, hasUser } = this.props
+    const { initializeSocket, emitRoomAction, hasUser, destroySocket } = this.props
 
     if (hasUser) {
       this.startSocket()
@@ -57,13 +55,18 @@ export class Main extends React.Component {
     })
   }
 
+  logOut() {
+    const { logOut, destroySocket } = this.props
+    logOut();
+    destroySocket();
+  }
+
   render() {
-    // const { queueNumberStorage, rooms } = this.state;
-    const { rooms, queueNumbers, emitRoomAction, logOut, userIsAdmin } = this.props
+    const { rooms, queueNumbers, emitRoomAction, userIsAdmin } = this.props
     return (
       <div className="container">
         <div className="logoutContainer">
-          <img src="https://i.imgur.com/Dz9Tpka.png" className="logout-button" onClick={logOut}/>
+          <img src="https://i.imgur.com/Dz9Tpka.png" className="logout-button" onClick={this.logOut}/>
         </div>
         <div className="header">
           <h4>Resources</h4>
@@ -101,8 +104,9 @@ const mapStateToProps = ({ rooms, queueNumbers, user }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     initializeSocket: () => startSocketConnection(dispatch),
-    emitRoomAction: (type, roomName) => dispatch({ protocol: 'SOCKET', type, payload: roomName }),
-    logOut: () => dispatch(logOut())
+    emitRoomAction: (type, roomName) => dispatch(getRoomAction(type, roomName)),
+    logOut: () => dispatch(logOut()),
+    destroySocket: () => dispatch(getRoomAction(DESTROY_SOCKET))
   }
 }
 

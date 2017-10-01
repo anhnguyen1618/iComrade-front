@@ -27,6 +27,10 @@ export const socketMiddleware = ({dispatch}) => {
     const { type, payload, protocol } = action;
     if (protocol === 'SOCKET') {
       const socketService = new SocketService()
+
+      if (type === 'DESTROY_SOCKET') {
+        return socketService.destroy();
+      }
       socketService.emitEvent(type, payload);
       return;
     }

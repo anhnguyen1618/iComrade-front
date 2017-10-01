@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { REMOVE_ROOM, BOOK_ROOM, FINISH_ROOM, CANCEL_ROOM} from '../../constants/action'
 import { getStatus } from '../../utils/helpers'
 
-const Room = ({ roomName, numberOfPeopleInUse, queueNumber, emitRoomAction }) => {
+const Room = ({ roomName, numberOfPeopleInUse, queueNumber, emitRoomAction, userIsAdmin }) => {
 	const roomClasses = classnames({
 		'room': true,
 		'room-booked-run': !queueNumber,
@@ -14,10 +14,13 @@ const Room = ({ roomName, numberOfPeopleInUse, queueNumber, emitRoomAction }) =>
 
 	return (
 		<div className="room-container">
-			 
-			<div className="btn-delete" onClick={() => emitRoomAction(REMOVE_ROOM, roomName)}>
-				<img src="https://image.ibb.co/htCMRQ/rubbish_bin.png"/>
-			</div>
+			
+			{userIsAdmin && (
+				<div className="btn-delete" onClick={() => emitRoomAction(REMOVE_ROOM, roomName)}>
+					<img src="https://image.ibb.co/htCMRQ/rubbish_bin.png"/>
+				</div>
+			)}
+			
 	
 			<div className={roomClasses}>
 				<div className="room__header">

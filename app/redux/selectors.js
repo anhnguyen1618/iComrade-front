@@ -4,3 +4,7 @@ export const getUrgentRooms = (state) => {
 	const urgentRooms = keys.filter(key => allRoomNumber[key] === 0 )
 	return urgentRooms
 }
+
+export const userIsAdmin = (user) => {
+	return user && user.role === 'ROLE_ADMIN';
+}

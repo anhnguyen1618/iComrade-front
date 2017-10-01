@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client'
 
-const URL = 'http://localhost:8000'
+const URL = '/'
 
 let _instance;
 class SocketService {
@@ -17,6 +17,10 @@ class SocketService {
 
   initializeSocket() {
     this.socket = openSocket(URL, { query: `token=${localStorage.getItem('token')}`});
+  }
+
+  destroy() {
+    _instance = null;
   }
 
   addSocketEventHanler(eventName, hanlder) {

@@ -26,6 +26,12 @@ module.exports = merge({
         pathRewrite: {
           '^/api': 'http://localhost:8000/api'
         }
+      },
+
+      '/socket.io': {
+        target: 'http://localhost:8000/',
+        changeOrigin: true,
+        secure: false
       }
     }
   },

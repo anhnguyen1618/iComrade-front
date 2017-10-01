@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client'
 
-const URL = '/'
+const URL = 'localhost:8000'
 
 let _instance;
 class SocketService {

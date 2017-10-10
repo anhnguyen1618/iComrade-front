@@ -1,9 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
-import { getCurrentUser } from '../../redux/api'
-import { getUrgentRooms } from '../../redux/selectors'
+import {getCurrentUser} from '../../redux/api'
+import {getUrgentRooms} from '../../redux/selectors'
 
 import Notification from './Notification.jsx'
 
@@ -13,33 +13,33 @@ export class Main extends React.Component {
   }
 
   componentDidMount() {
-  	const {getCurrnentUser, router} = this.props;
+    const {getCurrnentUser, router} = this.props;
     getCurrnentUser()
-    	.then( _ => {
-    		router.push('/dashboard')
-    	})
-    	.catch( _ => {
-    		router.push('/')
-    	})
+      .then(_ => {
+        router.push('/dashboard')
+      })
+      .catch(_ => {
+        router.push('/')
+      })
   }
 
   componentWillReceiveProps(nextProps) {
-    const { hasUser, router } = this.props
-  	if (nextProps.hasUser !== hasUser && !nextProps.hasUser) {
-  		router.push('/')
-  	}
+    const {hasUser, router} = this.props;
+    if (nextProps.hasUser !== hasUser && !nextProps.hasUser) {
+      router.push('/')
+    }
   }
 
   render() {
-  	const { router, notificationIsShown } = this.props
+    const {router, notificationIsShown} = this.props;
     return (
       <div>
         <div className={notificationIsShown && "main-content"}>
           {
-            React.cloneElement(this.props.children, { router })
-  	      }
+            React.cloneElement(this.props.children, {router})
+          }
         </div>
-        { notificationIsShown && <Notification/> }
+        {notificationIsShown && <Notification/>}
       </div>
     );
   }
@@ -53,9 +53,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-	return {
-		getCurrnentUser: () => dispatch(getCurrentUser())
-	}
+  return {
+    getCurrnentUser: () => dispatch(getCurrentUser())
+  }
 }
 
 export default connect(

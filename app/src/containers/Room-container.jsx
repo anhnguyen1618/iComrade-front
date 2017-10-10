@@ -1,17 +1,16 @@
 import React from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import { connect } from 'react-redux';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router'
+import {connect} from 'react-redux';
 import openSocket from 'socket.io-client'
 
 import Room from '../presentation/Room.jsx'
 import CreateButton from '../presentation/Create-button.jsx'
 
-import { CREATE_ROOM, REMOVE_ROOM, BOOK_ROOM,
-        FINISH_ROOM, CANCEL_ROOM, UPDATE_ROOM_INFO, GET_ROOM, DESTROY_SOCKET } from '../../constants/action'
-import { startSocketConnection } from '../../services/socket-helpers'
-import { logOut } from '../../redux/api'
-import { getRoomAction } from '../../redux/actions/socket'
-import { userIsAdmin } from '../../redux/selectors'
+import {CANCEL_ROOM, GET_ROOM, DESTROY_SOCKET, STATUS_NOT_BOOK, STATUS_BOOK} from '../../constants/action'
+import {startSocketConnection} from '../../services/socket-helpers'
+import {logOut} from '../../redux/api'
+import {getRoomAction} from '../../redux/actions/socket'
+import {userIsAdmin} from '../../redux/selectors'
 
 export class Main extends React.Component {
   constructor(props) {
@@ -23,7 +22,7 @@ export class Main extends React.Component {
   }
 
   componentDidMount() {
-    const { initializeSocket, emitRoomAction, hasUser, destroySocket } = this.props
+    const {hasUser} = this.props;
 
     if (hasUser) {
       this.startSocket()
@@ -49,20 +48,20 @@ export class Main extends React.Component {
   }
 
   cancelAllBooking() {
-    const { rooms, emitRoomAction } = this.props;
+    const {rooms, emitRoomAction} = this.props;
     rooms.forEach(({roomName}) => {
       emitRoomAction(CANCEL_ROOM, roomName);
     })
   }
 
   logOut() {
-    const { logOut, destroySocket } = this.props
+    const {logOut, destroySocket} = this.props
     logOut();
     destroySocket();
   }
 
   render() {
-    const { rooms, queueNumbers, emitRoomAction, userIsAdmin } = this.props
+    const {rooms, queueNumbers, emitRoomAction, userIsAdmin} = this.props
     return (
       <div className="container">
         <div className="logoutContainer">
@@ -70,10 +69,10 @@ export class Main extends React.Component {
         </div>
         <div className="header">
           <h4>Resources</h4>
-          { userIsAdmin && <CreateButton emitRoomAction={emitRoomAction}/> }        
+          {userIsAdmin && <CreateButton emitRoomAction={emitRoomAction}/>}
         </div>
 
-        { rooms.map(({roomName, numberOfPeopleInUse}) => {
+        {rooms.map(({roomName, numberOfPeopleInUse}) => {
           const queueNumber = queueNumbers[roomName];
           return (
             <Room
@@ -82,17 +81,17 @@ export class Main extends React.Component {
               numberOfPeopleInUse={numberOfPeopleInUse}
               emitRoomAction={emitRoomAction}
               userIsAdmin={userIsAdmin}
-              queueNumber={queueNumber >= 0 ? queueNumber : -1}
+              queueNumber={queueNumber >= STATUS_BOOK ? queueNumber : STATUS_NOT_BOOK}
             />
-            )
-          })
+          )
+        })
         }
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ rooms, queueNumbers, user }) => {
+const mapStateToProps = ({rooms, queueNumbers, user}) => {
   return {
     rooms,
     queueNumbers,

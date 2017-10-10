@@ -1,27 +1,40 @@
 # iComrade
 
- We create simple yet highly efficient a real-time platform for people to share  and book resources efficiently with the low cost and high usability.
+ Real-time booking/queuing application
 
-## Users
-* People with extra resources who want to lend their things at low price for certain period of time.
-* People with few resources/busy who want to rent things at low price for limited time.  
-* Building, office, school that have a huge number of residents with insufficient resources.
+## Technologies
 
-
-## Getting Started
-
-This is a user oriented app ,so It is very easy to use.All you have to do is just sign up in our website and then you can immediately start booking the places like parking .
+* [React](https://facebook.github.io/react/): JavaScript View library
+* [ExpressJS](https://expressjs.com/): NodeJS web framework
+* [Socket.io](https://socket.io/): Web socket library for JavaScript
+* [MongoDB](https://www.mongodb.com/): Non-SQL database
 
 
-## Built With
+## Installation
+```javascript
+yarn
+```
 
-We have used React.js,Redux in the front-end and Node.js, MongoDB, in the back end.
+## Start local server
+```javascript
+yarn start
+```
 
-## Authors
+or for Docker users
 
-* Nguyen, Anh
-* Bidari, Jaya
-* Nguyen, Kha
-* Vo, Ngoc
-* Bui, Thanh
+```javascript
+docker-compose up
+```
+
+## Run Unit test
+```javascript
+yarn test
+```
+
+## See also
+* [Back-end repository](https://github.com/Ngocvovn/iComrade)
+
+
+
+
 

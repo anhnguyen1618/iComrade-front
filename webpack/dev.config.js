@@ -20,16 +20,16 @@ module.exports = merge({
     watchOptions: { poll: true, ignored: /node_modules/ },
     proxy: {
       '/api': {
-        target: 'http://localhost:8000/',
+        target: 'http://icomrade.ggufpa3twb.eu-central-1.elasticbeanstalk.com/',
         changeOrigin: true,
         secure: false,
         pathRewrite: {
-          '^/api': 'http://localhost:8000/api'
+          '^/api': 'http://icomrade.ggufpa3twb.eu-central-1.elasticbeanstalk.com/api'
         }
       },
 
       '/socket.io': {
-        target: 'http://localhost:8000/',
+        target: 'http://icomrade.ggufpa3twb.eu-central-1.elasticbeanstalk.com/',
         changeOrigin: true,
         secure: false
       }

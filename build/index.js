@@ -3,7 +3,7 @@ const proxy = require('http-proxy-middleware');
 const path = require('path');
 
 
-const target = process.env.PROXY_TARGET || 'https://icomrade.herokuapp.com/'
+const target = process.env.PROXY_TARGET || 'http://icomrade.ggufpa3twb.eu-central-1.elasticbeanstalk.com/'
 
 var wsProxy = proxy('/', {
   target,

@@ -25,11 +25,11 @@ export class Login extends React.Component {
   }
 
   onSave(user) {
-  	const { router, signUp, logIn } = this.props
+  	const { router, signUp, logIn } = this.props;
 	  if (this.state.activeTab === "Login") {
 	    return logIn(user)
 	      .then(() => {
-	      	router.push('/dashboard')
+	      	router.push('/dashboard');
 	      	console.log('done');
 	      })
 	      .catch(err => {
@@ -39,8 +39,8 @@ export class Login extends React.Component {
 	  }
 	  return signUp(user)
 	    .then(() => {
-	      this.changeActiveTab('Login')
-	      alert("Account created successfully!")
+	      this.changeActiveTab('Login');
+	      alert("Account created successfully!");
 	    })
 	    .catch(err => {
 	      throw new SubmissionError({ _error: 'This user is already exist!' })
@@ -48,7 +48,7 @@ export class Login extends React.Component {
   }
 
   render() {
-  	const { activeTab } = this.state
+  	const { activeTab } = this.state;
 
     return (
       <div className="full-screen">

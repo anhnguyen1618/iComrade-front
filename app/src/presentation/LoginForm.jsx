@@ -1,23 +1,25 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form'
+import {Field, reduxForm} from 'redux-form'
 
 import LoginInput from './LoginInput.jsx'
 
 export const LoginForm = ({handleSubmit, activeTab, error, submitting}) => {
-	return (
-		<form className="form" onSubmit={handleSubmit}>
-    	<center>
-    	{ activeTab === 'Login'
-    		? <img className="login-logo" src="http://www.computer-repairs-auckland.co.nz/images/home_with_wifi.png" alt=""/>
-	    	: <img className="signup-logo" src="http://i.imgur.com/8XZaKyN.png" alt=""/>
-	    }
-    	</center>
-    	{error && <center className="error-message"><strong>{error}</strong></center>}
-    	<Field name="username" component={LoginInput}/>
-      	<Field name="password" component={LoginInput}/>
-      	<button className="pull-right waves-effect waves-light btn" type="submit" disabled={submitting}>{activeTab}</button>
+  return (
+    <form className="form" onSubmit={handleSubmit}>
+      <center>
+        {activeTab === 'Login'
+          ? <img className="login-logo" src="http://www.computer-repairs-auckland.co.nz/images/home_with_wifi.png"
+                 alt=""/>
+          : <img className="signup-logo" src="http://i.imgur.com/8XZaKyN.png" alt=""/>
+        }
+      </center>
+      {error && <center className="error-message"><strong>{error}</strong></center>}
+      <Field name="username" component={LoginInput}/>
+      <Field name="password" component={LoginInput}/>
+      <button className="pull-right waves-effect waves-light btn" type="submit"
+              disabled={submitting}>{activeTab}</button>
     </form>
-	)
+  )
 }
 
-export default reduxForm({ form: 'login-form' })(LoginForm)
+export default reduxForm({form: 'login-form'})(LoginForm)

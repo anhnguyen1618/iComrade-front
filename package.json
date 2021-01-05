@@ -35,7 +35,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.21.1",
     "classnames": "^2.2.5",
     "express": "^4.15.5",
     "http-proxy": "^1.16.2",

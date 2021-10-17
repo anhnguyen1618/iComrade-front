@@ -1,5 +1,4 @@
 import React from 'react';
-import {Router, Route, IndexRoute, browserHistory} from 'react-router'
 import {connect} from 'react-redux';
 import openSocket from 'socket.io-client'
 

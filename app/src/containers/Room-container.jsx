@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import openSocket from 'socket.io-client'
 
 import Room from '../presentation/Room.jsx'
 import CreateButton from '../presentation/Create-button.jsx'

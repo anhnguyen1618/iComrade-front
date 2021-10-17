@@ -21,7 +21,6 @@ const Room = ({roomName, numberOfPeopleInUse, queueNumber, emitRoomAction, userI
         </div>
       )}
 
-
       <div className={roomClasses}>
         <div className="room__header">
           <span className="room-name">{roomName}</span>
@@ -39,7 +38,6 @@ const Room = ({roomName, numberOfPeopleInUse, queueNumber, emitRoomAction, userI
                   onClick={() => emitRoomAction(BOOK_ROOM, roomName)}>Book</button>)
               }
 
-
               {
                 queueNumber >= STATUS_BOOK && (
                   <button
@@ -48,7 +46,6 @@ const Room = ({roomName, numberOfPeopleInUse, queueNumber, emitRoomAction, userI
                     Cancel
                   </button>)
               }
-
             </div>
           </div>
         </div>

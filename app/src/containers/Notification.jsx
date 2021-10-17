@@ -53,7 +53,7 @@ export class Notification extends React.Component {
   }
 
   render() {
-    const {emitRoomAction, urgentRooms} = this.props;
+    const {urgentRooms} = this.props;
     const urgentRoom = urgentRooms[0];
     return (
       <div className="notification-container">

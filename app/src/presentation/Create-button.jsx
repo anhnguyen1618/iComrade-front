@@ -45,7 +45,6 @@ class CreateButton extends React.Component {
         <div className={inputContainerClassNames}>
           <input type="text" onChange={this.updateBufferValue} value={bufferValue} className="input-create"/>
         </div>
-
         <img
           className={classnames({"create-button": true, "create-button-disabled": showInput && !bufferValue})}
           onClick={showInput ? this.createRoom : this.toggleInput}

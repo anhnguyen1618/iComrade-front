@@ -36,7 +36,3 @@ yarn test
 * [Back-end repository](https://github.com/Ngocvovn/iComrade)
 
 
-
-
-
-
